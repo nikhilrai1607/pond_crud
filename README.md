@@ -5,6 +5,8 @@ python version: python 3.8 +
 
 ```
 pip install flask
+
+python3 app.py
 ```
 
 Technical notes:

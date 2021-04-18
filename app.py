@@ -36,7 +36,6 @@ def item_func(id):
                 
                 conn.commit()
                 conn.close()
-                print('blah')
                 return jsonify({"result":"Data updated successfully.","data":dbsqlite.get_row(id)})
             except:
                 return jsonify({"result":"Error updating data."}), 403
