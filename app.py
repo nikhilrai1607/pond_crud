@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 import sqlite3
 import dbsqlite
 
-
+#DB functions used are in  dbsqlite.py
 
 #Database setup done!!
 db = dbsqlite.db
@@ -18,6 +18,7 @@ def item_func(id):
     
     conn,cur = dbsqlite.cursor()
 
+    
     if request.method == 'GET':
         if row != None:
             return jsonify(dict(row))
@@ -27,6 +28,7 @@ def item_func(id):
         
         data = request.get_json()
         
+        #Not Accepting id, created_at and updated_at for update function
         if 'id' in data or 'created_at' in data  or 'updated_at' in data:
             return jsonify({"result":"Change not allowed."}), 403
         else:
@@ -53,10 +55,11 @@ def item_func(id):
             except:
                 return jsonify({"result":"Error deleting data."}), 403
 
+#Endpoint to save the new entry
 @app.route('/items/',methods=['POST'])
 def save_item():
 
-    #recieved data
+    #recieved post data
     data = request.get_json()
     file_name = data['file_name']
     media_type = data['media_type']

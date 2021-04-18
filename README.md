@@ -12,6 +12,7 @@ python3 app.py
 Technical notes:
 1. Data source used is Sqlite3, as it requirement was to proviede easiest to setup locally.
 2. Nothing other than flask is needed for app to work.
+3. DB Table is defined in dbsqlite.py
 </br> 
 
 
@@ -74,7 +75,7 @@ If not found </br>
 
 #### UPDATE
 Endpoint: localhost:5000/items/\<id\> </br>
-payload: 
+payload: Only file_name and media_type can  be used for update.
 ```
 {
     "file_name":"Modified name here",
